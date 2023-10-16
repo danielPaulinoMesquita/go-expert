@@ -19,3 +19,8 @@ FUNDAÇÃO
 importando o fmt e imprimindo valores e tipos utilizando as func, como
 Printf("test type %T or value %v")  and Println
 
+5- Percorrer Arrays
+verificar o tamanho do array len(meuArray)
+for i, v := range meuArray {
+		fmt.Printf("The Value of index is %d and the value is %d\n", i, v)
+}
