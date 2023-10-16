@@ -6,7 +6,7 @@ const a = "Hellow World"
 //var c int
 //var d string
 
-// variables global
+// variables global (second form to declare variables)
 var (
 	b bool = true
 	c int
@@ -19,12 +19,12 @@ func main() {
 
 	// b = "owerwritevalue" <- this can't happen, because it is strongest typed.
 
-	e := "shorthand"
-	//e := false once time that you created and used shorthand, you can't create again
+	x := "shorthand"
+	//x := false once time that you created and used shorthand, you can't create again
 
 	println(a)
 	println(b)
 	println(c)
 	println(d)
-	println(e)
+	println(x)
 }
