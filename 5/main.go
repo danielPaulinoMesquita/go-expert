@@ -8,6 +8,7 @@ func main() {
 	meuArray[0] = 11
 	meuArray[1] = 222
 	meuArray[2] = 312
+	meuArray[3] = 412 // <-- out of bounds, because size is fixed on Arrays
 
 	fmt.Println(meuArray[0])
 	fmt.Println(len(meuArray))             //<-size or length
@@ -16,6 +17,7 @@ func main() {
 
 	for i, v := range meuArray {
 		fmt.Printf("The Value of index is %d and the value is %d\n", i, v)
+		//fmt.Printf("The Value of index is %d and the value is %s case it was string \n", i, v)
 	}
 
 }
