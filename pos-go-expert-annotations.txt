@@ -16,4 +16,6 @@ FUNDAÇÃO
 
 
 4- Importando fmt e tipagem
+importando o fmt e imprimindo valores e tipos utilizando as func, como
+Printf("test type %T or value %v")  and Println
 
