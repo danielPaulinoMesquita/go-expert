@@ -6,3 +6,14 @@ FUNDAÇÃO
 
 2- Declaração e atribuição
 * you can use shorthand to create var ":="
+
+3- Criando um type(tipo) de variável
+* type ID int
+* type IdString string:
+
+	f ID      = 21
+	g IdString = "Testando novo tipo variável String"
+
+
+4- Importando fmt e tipagem
+
