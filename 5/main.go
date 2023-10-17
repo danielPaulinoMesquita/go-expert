@@ -8,7 +8,6 @@ func main() {
 	meuArray[0] = 11
 	meuArray[1] = 222
 	meuArray[2] = 312
-	meuArray[3] = 412 // <-- out of bounds, because size is fixed on Arrays
 
 	fmt.Println(meuArray[0])
 	fmt.Println(len(meuArray))             //<-size or length
