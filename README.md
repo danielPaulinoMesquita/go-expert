@@ -1,31 +1,31 @@
-FUNDAÇÃO
+## FOUNDATION / FUNDAÇÃO
 
-1 - Entendendo a primeira linha
+### 1 - Entendendo a primeira linha
 * Tudo que estiver dentro do mesmo package é visivel para os outros arquivos go do mesmo pacote/package
 * package tem o nome do pacote que ele tiver inserido, caso não tem, ele vai ser main.
 
-2- Declaração e atribuição
+### 2- Declaração e atribuição
 * you can use shorthand to create var ":="
 
-3- Criando um type(tipo) de variável
+### 3- Criando um type(tipo) de variável
 * type ID int
 * type IdString string:
 
-	f ID      = 21
-	g IdString = "Testando novo tipo variável String"
+  f ID      = 21
+  g IdString = "Testando novo tipo variável String"
 
 
-4- Importando fmt e tipagem
+### 4- Importando fmt e tipagem
 importando o fmt e imprimindo valores e tipos utilizando as func, como
 Printf("test type %T or value %v")  and Println
 
-5- Percorrer Arrays
-verificar o tamanho do array len(meuArray)
+### 5- Percorrer Arrays
+verificar o tamanho do array len(meuArray) <br />  
 for i, v := range meuArray {
-		fmt.Printf("The Value of index is %d and the value is %d\n", i, v)
+fmt.Printf("The Value of index is %d and the value is %d\n", i, v)
 }
 
-6- Slice
+### 6- Slice
 anyArray[:] this is slice "[:]", you can get an interval of values from some array
 starting for the left trough the right or start index to final index.
 
