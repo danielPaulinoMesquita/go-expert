@@ -29,3 +29,10 @@ fmt.Printf("The Value of index is %d and the value is %d\n", i, v)
 anyArray[:] this is slice "[:]", you can get an interval of values from some array
 starting for the left trough the right or start index to final index.
 
+### 7- Maps
+var mapNamesOld = make(map[int]string) < -second way to create a map
+var mapNamesNew = map[int]string{} <- third way to create, initializing map with empty
+to print all elements of the map
+for chave, valor := range mapNames {
+fmt.Printf("Verificando chaves:(%s) valores=%d\n", chave, valor)
+}
