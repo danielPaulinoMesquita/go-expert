@@ -38,4 +38,7 @@ fmt.Printf("Verificando chaves:(%s) valores=%d\n", chave, valor)
 }
 
 ### 8 - functions
-Please, take aa look at code, directory 8
+Please, take aa lo ok at code, directory 8
+
+### 9 - Variadic Functions
+func sum(numbers ...int) int {
