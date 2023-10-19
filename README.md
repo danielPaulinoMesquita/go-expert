@@ -36,3 +36,6 @@ to print all elements of the map
 for chave, valor := range mapNames {
 fmt.Printf("Verificando chaves:(%s) valores=%d\n", chave, valor)
 }
+
+### 8 - functions
+Please, take aa look at code, directory 8
