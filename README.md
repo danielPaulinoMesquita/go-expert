@@ -42,3 +42,6 @@ Please, take aa lo ok at code, directory 8
 
 ### 9 - Variadic Functions
 func sum(numbers ...int) int {
+
+### 10 - Closure
+it's like anonymous class from JAVA
