@@ -45,3 +45,7 @@ func sum(numbers ...int) int {
 
 ### 10 - Closure
 it's like anonymous class from JAVA
+
+
+### 11 - Iniciando Com Structs.
+É como se fosse Class of java
