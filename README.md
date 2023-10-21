@@ -49,3 +49,12 @@ it's like anonymous class from JAVA
 
 ### 11 - Iniciando Com Structs.
 É como se fosse Class of java
+
+### 12 - Structs composite
+Você pode ver mais no dir 12
+
+### 13 - Métodos em Structs
+Pode criar funções dentro do structs como se fosse um comportamento
+
+
+

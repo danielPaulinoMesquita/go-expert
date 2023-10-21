@@ -34,7 +34,6 @@ func main() {
 	daniel.Endereco.Numero = 22
 
 	fmt.Println(daniel)
-
 	fmt.Println(daniel.Nome)
 	fmt.Println("--- Daniel all values after change ---")
 	fmt.Println(daniel)
