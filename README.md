@@ -54,7 +54,11 @@ it's like anonymous class from JAVA
 Você pode ver mais no dir 12
 
 ### 13 - Métodos em Structs
-Pode criar funções dentro do structs como se fosse um comportamento
+Pode criar funções dentro do structs como se fosse um comportamento(methods from java)
+
+### 14 - Interfaces
+Interface só tem métodos, não possui variáveis/atributos. Toda struct(classe)
+que cria um method(func) igual o da interface, implementa ela "por de baixo dos panos".
 
 
 
