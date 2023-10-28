@@ -60,5 +60,9 @@ Pode criar funções dentro do structs como se fosse um comportamento(methods fr
 Interface só tem métodos, não possui variáveis/atributos. Toda struct(classe)
 que cria um method(func) igual o da interface, implementa ela "por de baixo dos panos".
 
+### 15 - pointers
+'*' get the value from reference, & get the reference 
 
+### 16 - pointers and structs
+you will see in the dir pointer-structs and empty-interfac
 
