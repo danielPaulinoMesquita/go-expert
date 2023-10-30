@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-
 	fmt.Println("Using a new package", uuid.New())
 }
