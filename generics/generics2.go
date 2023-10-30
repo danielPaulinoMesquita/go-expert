@@ -18,10 +18,10 @@ func Compara[T Number](a T, b T) bool {
 //}
 
 func ComparaWithComparableParam[T comparable](a T, b T) bool {
-	// comparable verifies if is it the same
-	//if a > b {
-	//	return true
-	//}
+	//comparable verifies if is it the same
+	if a == b {
+		return true
+	}
 
 	return false
 }

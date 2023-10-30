@@ -66,3 +66,14 @@ que cria um method(func) igual o da interface, implementa ela "por de baixo dos 
 ### 16 - pointers and structs
 you will see in the dir pointer-structs and empty-interfac
 
+### 17 - modules and packages
+when you want to use a module, you need to execute the go mod init "nameOfModule"
+- Rules about functions, variables and structs from another file inside a module
+- - When the first letter is uppercase means it is visible in another file, like a 'export' in javascript
+- - if first letter is lowercase, only his file can see it. 
+
+### 18 - Generics
+You can use T for receive any types of argues, you can understand better if you access the dir name Generics
+
+### 19 - Install packages
+you must use go get 'package name' 
