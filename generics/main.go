@@ -57,4 +57,8 @@ func main() {
 	println(Soma(m2)) // could be passing "m"
 	println(SomaUsingNumber(m))
 	println(SomaUsingNumber(m3))
+	println(Compara(12.0, 10))
+	println(ComparaWithComparableParam(15, 12))
+	println(ComparaWithComparableParam(15, 12.0))
+
 }
