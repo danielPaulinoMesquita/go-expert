@@ -77,3 +77,16 @@ You can use T for receive any types of argues, you can understand better if you 
 
 ### 19 - Install packages
 you must use go get 'package name' 
+
+### 20 - Compiling projects
+you can run 
+* go build <-- if you are into a module, this command goes to find the right file(where is placed the main) to compile, and the name will be the same as the module
+* go build -o 'new name of build file' <-- this will change the name, and doesn't will the same of module
+* go build 'name of file or main file' <- this will create a file compile 
+* GOOS=windows go build 'name of file or main file' <- this will create a file compile(executable) to run on windows
+* GOOS=linux go build 'name of file or main file' <- this will create a file compile(executable) to run on linux
+* go tool dist list <-- to see all platforms
+* go env GOOS GOARCH
+
+Reference to know others platforms:
+https://www.digitalocean.com/community/tutorials/building-go-applications-for-different-operating-systems-and-architectures
