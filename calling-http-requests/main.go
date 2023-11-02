@@ -21,4 +21,5 @@ func main() {
 	println(string(res))
 	req.Body.Close() // <-- necessário fechar o stream
 
+	testingDefer()
 }
