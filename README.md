@@ -88,5 +88,12 @@ you can run
 * go tool dist list <-- to see all platforms
 * go env GOOS GOARCH
 
+
+### 27 and 28 Request using http
+dirs with requests in Http 
+* calling-http-requests
+* busca-CEP
+* calling-http-requests
+
 Reference to know others platforms:
 https://www.digitalocean.com/community/tutorials/building-go-applications-for-different-operating-systems-and-architectures
