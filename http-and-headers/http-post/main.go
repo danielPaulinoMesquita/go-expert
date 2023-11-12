@@ -10,7 +10,7 @@ import (
 func main() {
 	c := http.Client{}
 	jsonVar := bytes.NewBuffer([]byte(`{"name": "daniel"}`))
-	resp, err := c.Post("http://google.com", "application/json", jsonVar)
+	resp, err := c.Post("http://www.google.com", "application/json", jsonVar)
 	if err != nil {
 		panic(err)
 	}
