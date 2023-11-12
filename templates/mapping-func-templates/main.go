@@ -17,6 +17,9 @@ func toUpper(element string) string {
 	return strings.ToUpper(element)
 }
 
+/*
+document of templates https://pkg.go.dev/html/template
+*/
 func main() {
 	templates := []string{
 		"header.html",
