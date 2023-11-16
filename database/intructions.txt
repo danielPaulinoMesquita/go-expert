@@ -1,0 +1,25 @@
+you need to move to path of docker compose
+- sudo docker-compose up -d
+- sudo docker-compose exec mysql bash
+- mysql -uroot -p goexpert
+Enter password: root
+mysql -u root -p goexpert
+
+create table products (id varchar(255), name varchar(80), price decimal(10,2), primary key (id));
+
+How was created 'GO' file with external dependency, you must run following line:
+go mod init github.com/devfullcycle/goexpert/database/1
+
+after
+go mod tidy
+
+when you open a connection in the database, it gives us one error because his driver
+So you need to import the driver from mysql dependency, like the next line
+	_ "github.com/go-sql-driver/mysql"
+this underline '_' works to avoid error when the "GO" runs
+
+When you create a row or product, you can check this registry in the database with (you should be in the mysql):
+select * from products;
+
+ATTENTION
+It is a good practice to use prepare
