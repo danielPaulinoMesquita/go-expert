@@ -37,6 +37,12 @@ func main() {
 	var products4 []Product
 	findManyProductsLike(*db, products4)
 
+	var p Product
+	alter(*db, p)
+
+	var p2 Product
+	deleteRow(*db, p2)
+
 	// TODO to migrate Product as table
 	//err = db.AutoMigrate(&Product{})
 	//if err != nil {
