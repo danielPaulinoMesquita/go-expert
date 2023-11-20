@@ -28,6 +28,15 @@ func main() {
 	var products []Product
 	findAll(*db, products)
 
+	var products2 []Product
+	findWithLimit(*db, products2)
+
+	var products3 []Product
+	findManyProductsWhere(*db, products3)
+
+	var products4 []Product
+	findManyProductsLike(*db, products4)
+
 	// TODO to migrate Product as table
 	//err = db.AutoMigrate(&Product{})
 	//if err != nil {

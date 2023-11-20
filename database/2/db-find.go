@@ -28,3 +28,37 @@ func findAll(db gorm.DB, products []Product) {
 		fmt.Println(product)
 	}
 }
+
+func findWithLimit(db gorm.DB, products []Product) {
+	// select all
+	println("BUSCAR COM LIMITE")
+	db.Limit(2).Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}
+
+	println("BUSCAR COM LIMITE e OFFSET")
+	// it's like a pagination, in this case will be two in two
+	db.Limit(2).Offset(2).Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}
+}
+
+func findManyProductsWhere(db gorm.DB, products []Product) {
+	println("FIND MANY PRODUCTS WITH WHERE")
+
+	db.Where("price > ?", 500).Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}
+}
+
+func findManyProductsLike(db gorm.DB, products []Product) {
+	println("FIND MANY PRODUCTS WITH 'LIKE'")
+
+	db.Where("name LIKE ?", "%book").Find(&products)
+	for _, product := range products {
+		fmt.Println(product)
+	}
+}
