@@ -14,11 +14,10 @@ type Category struct {
 
 // Product gorm brings some properties or columns to manipulate the data. It is so useful
 type Product struct {
-	ID         int `gorm:"primaryKey"`
-	Name       string
-	Price      float64
-	CategoryID int
-	Category   Category
+	ID       int `gorm:"primaryKey"`
+	Name     string
+	Price    float64
+	Category Category `gorm:"foreignKey:ID"`
 	gorm.Model
 }
 
@@ -38,8 +37,8 @@ func main() {
 	}
 
 	//// TODO create Category
-	category := Category{Name: "Eletronicos"}
-	db.Create(&category)
+	//category := Category{Name: "Eletronicos"}
+	//db.Create(&category)
 
 	////TODO create Product
 	//db.Create(&Product{
@@ -49,16 +48,16 @@ func main() {
 	//
 	////TODO create Product with category
 	product := Product{
-		Name:       "Notebook",
-		Price:      1000.00,
-		CategoryID: category.ID,
+		Name:     "Alicate",
+		Price:    200.00,
+		Category: Category{Name: "Ferramenta"},
 	}
 	db.Create(&product)
 
 	var products []Product
 	db.Preload("Category").Find(&products)
 	for _, product := range products {
-		fmt.Println(product.Name, product.Category.Name)
+		fmt.Println(product.Name, product.Price, product.Category.Name)
 	}
 
 }
