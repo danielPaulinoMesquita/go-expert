@@ -23,3 +23,11 @@ select * from products;
 
 ATTENTION
 It is a good practice to use prepare
+
+LOCKS
+
+OTIMISTA
+name, email, versão
+W       w@w   2
+PESSIMISTA
+ele bloqueia a tabela
