@@ -6,7 +6,6 @@ import (
 	"gorm.io/gorm"
 )
 
-// Category
 type Category struct {
 	ID   int `gorm:"primaryKey"`
 	Name string
