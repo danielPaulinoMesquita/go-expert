@@ -60,11 +60,11 @@ func main() {
 	//})
 	//
 	////TODO create batch
-	//products := []Product{
-	//	{Name: "Notebook", Price: 1000.00},
-	//	{Name: "Mouse", Price: 70.00},
-	//	{Name: "KeyBoard", Price: 400.00},
-	//}
+	products := []Product{
+		{Name: "Notebook", Price: 1000.00},
+		{Name: "Mouse", Price: 70.00},
+		{Name: "KeyBoard", Price: 400.00},
+	}
 	//
-	//db.Create(&products)
+	db.Create(&products)
 }

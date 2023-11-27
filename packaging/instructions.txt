@@ -1,0 +1,5 @@
+One way to import a package or module from your local, you can use --replace
+example:
+ go mod edit -replace github.com/danielPaulinoMesquita/go-expert/packaging/math=../math
+
+so this instruction rather to download from repository(remote) it will catch in the local, specifically "../math"

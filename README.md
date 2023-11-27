@@ -97,3 +97,18 @@ dirs with requests in Http
 
 Reference to know others platforms:
 https://www.digitalocean.com/community/tutorials/building-go-applications-for-different-operating-systems-and-architectures
+
+
+### Create a module
+go mod init github.com/devfullcycle/goexpert/7-packing/1
+this url allow you to access and get this module in another project
+
+####  example
+<pre>
+    <code>
+module github.com/danielPaulinoMesquita/go-expert/package_modules
+
+go 1.21.3
+    </code>
+</pre>
+
