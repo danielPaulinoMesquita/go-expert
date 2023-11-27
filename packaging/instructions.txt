@@ -3,3 +3,27 @@ example:
  go mod edit -replace github.com/danielPaulinoMesquita/go-expert/packaging/math=../math
 
 so this instruction rather to download from repository(remote) it will catch in the local, specifically "../math"
+
+example 2:
+* Working with go work:
+ go work init ./math ./cmd
+
+This way is much more efficient because it doesn't dirt the file go.mod with instructions replace
+
+one code snippet from go.work
+use (
+	./cmd
+	./math
+)
+
+this key word points to the paths where cmd and math are located.
+
+ATTENTION: When you use workspaces in your project, you can't download or import modules automatic with go mod tidy.
+
+So, to download something, you can use the go get {nameofLib}
+
+or
+
+go mod tidy -e
+
+this command will ignore all packages that can't be found and download only them can be found
