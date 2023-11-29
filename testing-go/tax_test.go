@@ -13,6 +13,17 @@ func TestCalculateTax(t *testing.T) {
 	}
 }
 
+func TestCalculateTax2(t *testing.T) {
+	amount := 500.0
+	expected := 5.0
+
+	result := CalculateTax2(amount)
+
+	if result != expected {
+		t.Errorf("Expected %f but got %f", expected, result)
+	}
+}
+
 func TestCalculateTaxBatch(t *testing.T) {
 	type calcTax struct {
 		amount, expect float64
@@ -31,4 +42,17 @@ func TestCalculateTaxBatch(t *testing.T) {
 		}
 	}
 
+}
+
+func BenchmarkCalculateTax(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		CalculateTax(500.00)
+	}
+}
+
+// This is necessary to test
+func BenchmarkCalculateTax2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		CalculateTax2(500.00)
+	}
 }

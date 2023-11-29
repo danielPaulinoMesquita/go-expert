@@ -11,3 +11,21 @@ go test -coverprofile=coverage.out //<- pointing the per cent of cover
 go tool cover -html=coverage.out // <-- this showed up part of code that is not covered
 
 
+t *testing.T //<- to serve for test unit
+
+b *testing.B //<- to serve for benchmark
+
+go test -bench=.
+go test -bench=. -run=^#  // <- without tests
+go test -bench=. -run=^# -count=10 // <- without tests and showing 10 times operation
+go test -bench=. -run=^# benchmem // <- without tests and shows the allocation memory
+
+
+---- understanting the result of benchmark -----
+goos: linux
+goarch: amd64
+pkg: testFiles
+cpu: AMD Ryzen 3 2200G with Radeon Vega Graphics
+BenchmarkCalculateTax-4         1000000000               0.2776 ns/op    // <- 4 cores used and 1000000000 operations and time used 0.2776
+PASS
+ok      testFiles       0.309s
