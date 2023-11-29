@@ -1,0 +1,13 @@
+
+to testing go files
+
+go test
+
+go test -v //<- with more details
+
+testar cobertura (test cover of code)
+go test -coverprofile=coverage.out //<- pointing the per cent of cover
+
+go tool cover -html=coverage.out // <-- this showed up part of code that is not covered
+
+
