@@ -1,5 +1,4 @@
-
-to testing go files
+TO TESTING FILES
 
 go test
 
@@ -21,7 +20,7 @@ go test -bench=. -run=^# -count=10 // <- without tests and showing 10 times oper
 go test -bench=. -run=^# benchmem // <- without tests and shows the allocation memory
 
 
----- understanting the result of benchmark -----
+---- understanding the result of benchmark -----
 goos: linux
 goarch: amd64
 pkg: testFiles
@@ -29,3 +28,29 @@ cpu: AMD Ryzen 3 2200G with Radeon Vega Graphics
 BenchmarkCalculateTax-4         1000000000               0.2776 ns/op    // <- 4 cores used and 1000000000 operations and time used 0.2776
 PASS
 ok      testFiles       0.309s
+
+FUZZING
+
+He makes various tests to check the possibility of error
+of course, you need to tell him what rule going to use for check that error
+command line:
+go test -fuzz=.
+
+when happens some error, Fuzz generate a file with value of the last error
+
+Example of report of Fuzzy:
+
+fuzz: elapsed: 0s, execs: 8 (1010/sec), new interesting: 0 (total: 6)
+--- FAIL: FuzzCalculateTax (0.01s)
+    --- FAIL: FuzzCalculateTax (0.00s)
+        tax_test.go:74: Expected 0 but got 10.000000
+
+    Failing input written to testdata/fuzz/FuzzCalculateTax/14cdd1a18ff82563
+    To re-run:
+    go test -run=FuzzCalculateTax/14cdd1a18ff82563
+FAIL
+exit status 1
+FAIL    testFiles       0.012s
+
+If you fix the error or fail, you can test again running the line: go test -run=FuzzCalculateTax/14cdd1a18ff82563 as you see on the example
+so, when happens some error, the fuzzy always shows us what error or value was passed
