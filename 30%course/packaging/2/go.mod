@@ -9,4 +9,4 @@ require (
 
 /// go.sum looks like package-lock.json, it is responsible to save the version of lib or module downloaded by go.mod
 
-replace golandProjects/awesomeProject/packaging/math => ../math
+replace golandProjects/awesomeProject/packaging/math => ./../math
