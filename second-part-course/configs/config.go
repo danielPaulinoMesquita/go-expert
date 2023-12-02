@@ -5,8 +5,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-var cfg *conf
-
 // viper is used for converting params from .env to conf
 type conf struct {
 	DBDriver      string `mapstructure:"DB_DRIVER"`
@@ -21,7 +19,10 @@ type conf struct {
 	TokenAuth     *jwtauth.JWTAuth
 }
 
+// LoadConfig basically the viper is passing the values from
+// .env to struct conf, later the variables can be accessed by main
 func LoadConfig(path string) (*conf, error) {
+	var cfg *conf
 	viper.SetConfigName("app_config")
 	viper.SetConfigType("env")
 	viper.AddConfigPath(path)
