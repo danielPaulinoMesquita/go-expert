@@ -1,0 +1,11 @@
+1- dir "internal" serves to create private files and resources that should not export by mod
+
+2- dir "pkg" serves to export or externalizing applications, other projects will import these libraries
+
+3- dir "cmd" where the project is placed, where the system will run
+
+4- dir "configs" serves to save templates or files of configuration to support the boot of application
+
+5- dir "test" where is placed the files to support the tests
+
+6- dir "api" serves to create the apis and the swagger docs
