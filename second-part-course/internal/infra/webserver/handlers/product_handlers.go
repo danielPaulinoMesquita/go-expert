@@ -5,6 +5,8 @@ import (
 	"github.com/devfullcycle/dan/goexpert/internal/dto"
 	"github.com/devfullcycle/dan/goexpert/internal/entity"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
+	entityPkg "github.com/devfullcycle/dan/goexpert/pkg/entity"
+	"github.com/go-chi/chi"
 	"net/http"
 )
 
@@ -18,7 +20,7 @@ func NewProductHandler(db database.ProductInterface) *ProductHandler {
 	}
 }
 
-// In the context of building web applications or APIs using Go, a handler is responsible
+// CreateProduct In the context of building web applications or APIs using Go, a handler is responsible
 // for receiving an HTTP request, performing the necessary actions based on the request,
 // and returning an appropriate response.
 func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
@@ -43,4 +45,60 @@ func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusCreated)
+}
+
+func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+
+	if id == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	product, err := h.ProductDB.FindById(id)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(product)
+}
+func (h *ProductHandler) UpdateProduct(w http.ResponseWriter, r *http.Request) {
+	id := chi.URLParam(r, "id")
+
+	if id == "" {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	var product entity.Product
+	err := json.NewDecoder(r.Body).Decode(&product)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	product.ID, err = entityPkg.ParseID(id)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	_, err = h.ProductDB.FindById(id)
+	if err != nil {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
+	err = h.ProductDB.Update(&product)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(product)
 }

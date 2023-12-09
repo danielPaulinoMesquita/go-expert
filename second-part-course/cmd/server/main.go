@@ -30,6 +30,8 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
 	r.Post("/products", productHandler.CreateProduct)
+	r.Get("/products/{id}", productHandler.GetProduct)
+	r.Put("/products/{id}", productHandler.UpdateProduct)
 
 	// This can be considered a mux from Go
 	// Multiplexer or router used for handling HTTP requests in a web application.
