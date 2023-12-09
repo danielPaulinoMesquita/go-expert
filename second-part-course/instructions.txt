@@ -9,3 +9,16 @@
 5- dir "test" where is placed the files to support the tests
 
 6- dir "api" serves to create the apis and the swagger docs
+
+// FRAMEWORKS TO CREATE HANDLERS, it's a good option
+https://echo.labstack.com/
+and
+https://docs.gofiber.io/
+and
+https://gin-gonic.com/
+
+
+// FRAMEWORKS to develop faster
+https://gobuffalo.io/
+and
+https://www.iris-go.com/
