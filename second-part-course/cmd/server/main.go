@@ -5,6 +5,8 @@ import (
 	"github.com/devfullcycle/dan/goexpert/internal/entity"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/webserver/handlers"
+	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"net/http"
@@ -25,7 +27,14 @@ func main() {
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
 
-	http.HandleFunc("/products", productHandler.CreateProduct)
-	http.ListenAndServe(":8000", nil)
+	r := chi.NewRouter()
+	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
+	r.Post("/products", productHandler.CreateProduct)
+
+	// This can be considered a mux from Go
+	// Multiplexer or router used for handling HTTP requests in a web application.
+	// It is short for "HTTP request multiplexer."
+	// http.HandleFunc("/products", productHandler.CreateProduct)
+	http.ListenAndServe(":8000", r)
 
 }
