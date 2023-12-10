@@ -24,8 +24,12 @@ func main() {
 	}
 
 	db.AutoMigrate(&entity.Product{}, &entity.User{}) // <-- Creating Table Product and User
+
 	productDB := database.NewProduct(db)
 	productHandler := handlers.NewProductHandler(productDB)
+
+	userDB := database.NewUser(db)
+	userHandler := handlers.NewUserHandler(userDB)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
@@ -34,6 +38,8 @@ func main() {
 	r.Put("/products/{id}", productHandler.UpdateProduct)
 	r.Delete("/products/{id}", productHandler.DeleteProduct)
 	r.Get("/products", productHandler.GetProducts)
+
+	r.Post("/users", userHandler.CreateUser)
 	// This can be considered a mux from Go
 	// Multiplexer or router used for handling HTTP requests in a web application.
 	// It is short for "HTTP request multiplexer."
