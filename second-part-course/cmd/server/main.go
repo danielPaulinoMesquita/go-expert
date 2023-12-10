@@ -32,7 +32,8 @@ func main() {
 	r.Post("/products", productHandler.CreateProduct)
 	r.Get("/products/{id}", productHandler.GetProduct)
 	r.Put("/products/{id}", productHandler.UpdateProduct)
-
+	r.Delete("/products/{id}", productHandler.DeleteProduct)
+	r.Get("/products", productHandler.GetProducts)
 	// This can be considered a mux from Go
 	// Multiplexer or router used for handling HTTP requests in a web application.
 	// It is short for "HTTP request multiplexer."
