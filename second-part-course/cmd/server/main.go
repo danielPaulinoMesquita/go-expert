@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	_, err := configs.LoadConfig(".")
+	configs, err := configs.LoadConfig(".")
 	if err != nil {
 		panic(err)
 	}
@@ -29,7 +29,7 @@ func main() {
 	productHandler := handlers.NewProductHandler(productDB)
 
 	userDB := database.NewUser(db)
-	userHandler := handlers.NewUserHandler(userDB)
+	userHandler := handlers.NewUserHandler(userDB, configs.TokenAuth, configs.JWTExpressIn)
 
 	r := chi.NewRouter()
 	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
@@ -40,6 +40,8 @@ func main() {
 	r.Get("/products", productHandler.GetProducts)
 
 	r.Post("/users", userHandler.CreateUser)
+	r.Post("/users/generate_token", userHandler.GetJWT)
+
 	// This can be considered a mux from Go
 	// Multiplexer or router used for handling HTTP requests in a web application.
 	// It is short for "HTTP request multiplexer."
