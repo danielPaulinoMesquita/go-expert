@@ -6,10 +6,10 @@ import (
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/webserver/handlers"
 	"github.com/go-chi/chi"
-	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/jwtauth"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"log"
 	"net/http"
 )
 
@@ -33,7 +33,8 @@ func main() {
 	userHandler := handlers.NewUserHandler(userDB, configs.TokenAuth, configs.JWTExpressIn)
 
 	r := chi.NewRouter()
-	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
+	//r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests, now it was taken out, and replaced for native middleware from Golang, using HandleFunc
+	r.Use(LogRequest)
 
 	r.Route("/products", func(r chi.Router) {
 		r.Use(jwtauth.Verifier(configs.TokenAuth)) // <-- Adding a middleware for verifying the token
@@ -54,4 +55,17 @@ func main() {
 	// http.HandleFunc("/products", productHandler.CreateProduct)
 	http.ListenAndServe(":8000", r)
 
+}
+
+/*
+*
+Explanation of middleware
+made a 'Request' -> Middleware(usa os dados, faz alguma coisa, Continua) | outro middler | outro Midler -> Handler -> 'Response'
+example below:
+*/
+func LogRequest(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		log.Println(r.Method, r.URL.Path)
+		next.ServeHTTP(w, r)
+	})
 }
