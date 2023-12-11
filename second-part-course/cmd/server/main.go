@@ -6,6 +6,7 @@ import (
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/webserver/handlers"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/jwtauth"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -30,11 +31,15 @@ func main() {
 	productHandler := handlers.NewProductHandler(productDB)
 
 	userDB := database.NewUser(db)
-	userHandler := handlers.NewUserHandler(userDB, configs.TokenAuth, configs.JWTExpressIn)
+	userHandler := handlers.NewUserHandler(userDB)
 
 	r := chi.NewRouter()
-	//r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests, now it was taken out, and replaced for native middleware from Golang, using HandleFunc
-	r.Use(LogRequest)
+	r.Use(middleware.Logger) // <-- this middleware applies the logs for the requests
+	//r.Use(LogRequest) /  native middleware for logs
+	r.Use(middleware.Recoverer)
+	r.Use(middleware.WithValue("jwt", configs.TokenAuth))
+	r.Use(middleware.WithValue("jwtExpiresIn", configs.JWTExpressIn))
+	// description WithValue - jwt is the value that we want, configs.TokenAuth is the context where the jwt will be inserted
 
 	r.Route("/products", func(r chi.Router) {
 		r.Use(jwtauth.Verifier(configs.TokenAuth)) // <-- Adding a middleware for verifying the token
