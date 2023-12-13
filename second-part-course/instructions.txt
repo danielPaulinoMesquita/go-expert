@@ -34,3 +34,22 @@ first all, we need to install the binaries of swagger, after configuring the env
 
 ref: https://github.com/swaggo/swag
 
+-Every time you should put a documentation on the APIs,
+you need to run swag init
+
+swag init --parseDependency -g cmd/server/main.go
+
+- when you want to create a doc for your apis, you run this command
+
+swag init  --parseDependency -g cmd/server/main.go
+
+but, it can happen a problem or simply not generate the doc
+so, you can go to the dir, where is the file with the apis and generate there the command
+
+swag init --parseDependency -g user-handlers.go
+
+then, get the lines of docs just generated in doc from your current directory and paste them on the main file of swagger, that is placed /cmd/server/docs
+now, it will work .
+
+
+

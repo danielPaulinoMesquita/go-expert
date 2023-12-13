@@ -1,0 +1,102 @@
+basePath: /
+definitions:
+  github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput:
+    properties:
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    type: object
+  github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput:
+    properties:
+      accessToken:
+        type: string
+    type: object
+  internal_infra_webserver_handlers.Error:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: Product API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Go Expert Daniel Example API
+  version: "1.0"
+paths:
+  /users:
+    post:
+      consumes:
+      - application/json
+      description: Create user
+      parameters:
+      - description: user request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+      summary: Create user
+      tags:
+      - users
+  /users/generate_token:
+    post:
+      consumes:
+      - application/json
+      description: Get a user JWT
+      parameters:
+      - description: user credentials
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+      summary: Get a user JWT
+      tags:
+      - users
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

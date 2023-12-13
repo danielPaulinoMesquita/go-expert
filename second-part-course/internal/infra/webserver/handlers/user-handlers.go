@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	_ "github.com/devfullcycle/dan/goexpert/cmd/server/docs"
 	"github.com/devfullcycle/dan/goexpert/internal/dto"
 	"github.com/devfullcycle/dan/goexpert/internal/entity"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
@@ -16,12 +17,27 @@ type UserHandler struct {
 	JwtExperiesIn int
 }
 
+type Error struct {
+	Message string `json:"message"`
+}
+
 func NewUserHandler(userDB database.UserInterface) *UserHandler {
 	return &UserHandler{
 		UserDB: userDB,
 	}
 }
 
+// GetJWT godoc
+// @Summary      Get a user JWT
+// @Description  Get a user JWT
+// @Tags         users
+// @Accept       json
+// @Produce      json
+// @Param        request   body  dto.GetJwtInput  true  "user credentials"
+// @Success      200   {object}  dto.GetJwtOutput
+// @Failure      404   {object}  Error
+// @Failure      500  {object} 	Error
+// @Router		 /users/generate_token [post]
 func (h UserHandler) GetJWT(w http.ResponseWriter, r *http.Request) {
 	jwt := r.Context().Value("jwt").(*jwtauth.JWTAuth)
 	jwtExpiriesIn := r.Context().Value("jwtExpiresIn").(int)
@@ -29,12 +45,14 @@ func (h UserHandler) GetJWT(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&user)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
+		err := Error{Message: err.Error()}
+		json.NewEncoder(w).Encode(err)
 		return
 	}
 
 	u, err := h.UserDB.FindByEmail(user.Email)
 	if err != nil {
-		w.WriteHeader(http.StatusUnauthorized)
+		w.WriteHeader(http.StatusNotFound)
 		return
 	}
 
@@ -47,11 +65,7 @@ func (h UserHandler) GetJWT(w http.ResponseWriter, r *http.Request) {
 		"sub": u.ID.String(),
 		"exp": time.Now().Add(time.Second * time.Duration(jwtExpiriesIn)).Unix(),
 	})
-	accessToken := struct {
-		AccessToken string `json:"accessToken"`
-	}{
-		AccessToken: tokenString,
-	}
+	accessToken := dto.GetJwtOutput{AccessToken: tokenString}
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -61,6 +75,16 @@ func (h UserHandler) GetJWT(w http.ResponseWriter, r *http.Request) {
 
 }
 
+// CreateUser Create User godoc
+// @Summary      Create user
+// @Description  Create user
+// @Tags         users
+// @Accept       json
+// @Produce      json
+// @Param        request   body     dto.CreateUserInput  true  "user request"
+// @Success      201
+// @Failure      500  {object} 	Error
+// @Router		 /users [post]
 func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	var user dto.CreateUserInput
 	err := json.NewDecoder(r.Body).Decode(&user)
@@ -72,12 +96,16 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
 	u, err := entity.NewUser(user.Name, user.Email, user.Password)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
+		error := Error{Message: err.Error()}
+		json.NewEncoder(w).Encode(error)
 		return
 	}
 
 	err = h.UserDB.Create(u)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
+		error := Error{Message: err.Error()}
+		json.NewEncoder(w).Encode(error)
 		return
 	}
 

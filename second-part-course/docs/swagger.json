@@ -1,0 +1,155 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Product API.",
+        "title": "Go Expert Daniel Example API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/",
+    "paths": {
+        "/users": {
+            "post": {
+                "description": "Create user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Create user",
+                "parameters": [
+                    {
+                        "description": "user request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/generate_token": {
+            "post": {
+                "description": "Get a user JWT",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "users"
+                ],
+                "summary": "Get a user JWT",
+                "parameters": [
+                    {
+                        "description": "user credentials",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                }
+            }
+        },
+        "github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "type": "string"
+                }
+            }
+        },
+        "internal_infra_webserver_handlers.Error": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
