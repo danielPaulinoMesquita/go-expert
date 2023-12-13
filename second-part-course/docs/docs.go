@@ -23,7 +23,104 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-	"paths": {
+    "paths": {
+        "/products": {
+            "get": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "list products",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "products"
+                ],
+                "summary": "list products",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "page number",
+                        "name": "page",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "description": "create product",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "products"
+                ],
+                "summary": "create product",
+                "parameters": [
+                    {
+                        "description": "product request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.CreateProductInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
+                        }
+                    }
+                }
+            }
+        },
         "/users": {
             "post": {
                 "description": "Create user",
@@ -44,7 +141,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.CreateUserInput"
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput"
                         }
                     }
                 ],
@@ -55,7 +152,7 @@ const docTemplate = `{
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/handlers.Error"
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
                         }
                     }
                 }
@@ -81,7 +178,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/dto.GetJwtInput"
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput"
                         }
                     }
                 ],
@@ -89,19 +186,19 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/dto.GetJwtOutput"
+                            "$ref": "#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/handlers.Error"
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/handlers.Error"
+                            "$ref": "#/definitions/internal_infra_webserver_handlers.Error"
                         }
                     }
                 }
@@ -109,7 +206,18 @@ const docTemplate = `{
         }
     },
     "definitions": {
-        "dto.CreateUserInput": {
+        "github_com_devfullcycle_dan_goexpert_internal_dto.CreateProductInput": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "price": {
+                    "type": "number"
+                }
+            }
+        },
+        "github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput": {
             "type": "object",
             "properties": {
                 "email": {
@@ -123,7 +231,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GetJwtInput": {
+        "github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtInput": {
             "type": "object",
             "properties": {
                 "email": {
@@ -134,7 +242,7 @@ const docTemplate = `{
                 }
             }
         },
-        "dto.GetJwtOutput": {
+        "github_com_devfullcycle_dan_goexpert_internal_dto.GetJwtOutput": {
             "type": "object",
             "properties": {
                 "accessToken": {
@@ -142,7 +250,7 @@ const docTemplate = `{
                 }
             }
         },
-        "handlers.Error": {
+        "internal_infra_webserver_handlers.Error": {
             "type": "object",
             "properties": {
                 "message": {

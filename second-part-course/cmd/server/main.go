@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "github.com/devfullcycle/dan/goexpert/cmd/server/docs"
 	"github.com/devfullcycle/dan/goexpert/configs"
+	_ "github.com/devfullcycle/dan/goexpert/docs"
 	"github.com/devfullcycle/dan/goexpert/internal/entity"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/webserver/handlers"

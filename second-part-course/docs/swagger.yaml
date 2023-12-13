@@ -1,5 +1,12 @@
 basePath: /
 definitions:
+  github_com_devfullcycle_dan_goexpert_internal_dto.CreateProductInput:
+    properties:
+      name:
+        type: string
+      price:
+        type: number
+    type: object
   github_com_devfullcycle_dan_goexpert_internal_dto.CreateUserInput:
     properties:
       email:
@@ -40,6 +47,67 @@ info:
   title: Go Expert Daniel Example API
   version: "1.0"
 paths:
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: list products
+      parameters:
+      - description: page number
+        in: query
+        name: page
+        type: string
+      - description: limit
+        in: query
+        name: limit
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: list products
+      tags:
+      - products
+    post:
+      consumes:
+      - application/json
+      description: create product
+      parameters:
+      - description: product request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_devfullcycle_dan_goexpert_internal_dto.CreateProductInput'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/internal_infra_webserver_handlers.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: create product
+      tags:
+      - products
   /users:
     post:
       consumes:

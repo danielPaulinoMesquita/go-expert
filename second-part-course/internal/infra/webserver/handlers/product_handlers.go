@@ -24,6 +24,18 @@ func NewProductHandler(db database.ProductInterface) *ProductHandler {
 // CreateProduct In the context of building web applications or APIs using Go, a handler is responsible
 // for receiving an HTTP request, performing the necessary actions based on the request,
 // and returning an appropriate response.
+
+// CreateProduct godoc
+// @Summary      create product
+// @Description  create product
+// @Tags         products
+// @Accept       json
+// @Produce      json
+// @Param        request   body  dto.CreateProductInput  true  "product request"
+// @Success      201
+// @Failure      500  {object} 	Error
+// @Router		 /products [post]
+// @Security	ApiKeyAuth
 func (h *ProductHandler) CreateProduct(w http.ResponseWriter, r *http.Request) {
 	var productInput dto.CreateProductInput
 	err := json.NewDecoder(r.Body).Decode(&productInput) //<- it try to decode body to &productInput
@@ -67,6 +79,19 @@ func (h *ProductHandler) GetProduct(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(product)
 }
 
+// GetProducts godoc
+// @Summary      list products
+// @Description  list products
+// @Tags         products
+// @Accept       json
+// @Produce      json
+// @Param        page   query  string  false  "page number"
+// @Param        limit   query  string  false  "limit"
+// @Success      200	{array}	Error
+// @Failure      404 	{object} 	Error
+// @Failure      500 	{object} 	Error
+// @Router		 /products [get]
+// @Security	ApiKeyAuth
 func (h *ProductHandler) GetProducts(w http.ResponseWriter, r *http.Request) {
 	page := r.URL.Query().Get("page")
 	limit := r.URL.Query().Get("limit")

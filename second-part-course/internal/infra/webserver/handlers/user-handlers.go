@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
-	_ "github.com/devfullcycle/dan/goexpert/cmd/server/docs"
+	_ "github.com/devfullcycle/dan/goexpert/docs"
 	"github.com/devfullcycle/dan/goexpert/internal/dto"
 	"github.com/devfullcycle/dan/goexpert/internal/entity"
 	"github.com/devfullcycle/dan/goexpert/internal/infra/database"
