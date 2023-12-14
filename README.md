@@ -112,3 +112,20 @@ go 1.21.3
     </code>
 </pre>
 
+Scheduler:
+The Go scheduler, also known as the goroutine scheduler, is a component of the Go runtime responsible for managing the execution of goroutines. 
+Goroutines are lightweight concurrent units of execution in Go. 
+The scheduler is responsible for distributing goroutines across available operating system threads, scheduling their execution, and managing their lifecycle.
+
+Escalonamento Cooperativo:
+Em um sistema de escalonamento cooperativo, as tarefas cedem o controle voluntariamente a outras tarefas. 
+A tarefa em execução decide quando liberar a CPU, geralmente chamando explicitamente uma função de yield ou sleep fornecida pelo escalonador. 
+O escalonador depende das tarefas cooperarem e liberarem o controle, pois ele não preempta tarefas em execução de forma forçada.
+
+Escalonamento Preemptivo:
+Em um sistema de escalonamento preemptivo, o escalonador tem a capacidade de interromper ou preemptar uma tarefa em execução e alocar a CPU para outra tarefa. 
+O escalonador decide quando preemptar uma tarefa com base em critérios pré-determinados, como fatias de tempo ou níveis de prioridade.
+Mutex:
+A mutex (short for mutual exclusion) is a synchronization primitive used to protect shared resources in concurrent programming. 
+In Go, the sync package provides a Mutex type that allows safe access to shared data.
+A mutex ensures that only one goroutine can access a shared resource at a time, preventing race conditions.
