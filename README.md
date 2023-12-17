@@ -129,3 +129,9 @@ Mutex:
 A mutex (short for mutual exclusion) is a synchronization primitive used to protect shared resources in concurrent programming. 
 In Go, the sync package provides a Mutex type that allows safe access to shared data.
 A mutex ensures that only one goroutine can access a shared resource at a time, preventing race conditions.
+
+
+Managing Threads 
+
+Green Threads -> Golang creates his threads until these threads can't lead with the processors,
+so it can't lead, it comes using the threads from RUNTIME
