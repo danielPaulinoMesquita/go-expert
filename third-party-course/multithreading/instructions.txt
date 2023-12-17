@@ -1,6 +1,6 @@
 Go Routines
 
-put "go" before function or anonymous function th run multithreading
+put "go" before function or anonymous function to run multithreading
 
 
 Wait Groups
