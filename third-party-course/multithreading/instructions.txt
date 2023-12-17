@@ -1,0 +1,10 @@
+Go Routines
+
+put "go" before function or anonymous function th run multithreading
+
+
+Wait Groups
+
+* Add quantity of tasks; operations
+* Infos that you have finished one operation
+* Wait until the operations have been finished.
