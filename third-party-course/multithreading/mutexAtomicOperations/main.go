@@ -3,18 +3,19 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"sync"
+	"sync/atomic"
 	"time"
 )
 
 var number uint64 = 0
 
 func main() {
-	m := sync.Mutex{}
+	//m := sync.Mutex{}
 	http.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
-		m.Lock()
-		number++
-		m.Unlock()
+		//m.Lock()
+		//number++
+		atomic.AddUint64(&number, 1)
+		//m.Unlock()
 		time.Sleep(300 * time.Millisecond)
 		writer.Write([]byte(fmt.Sprintf("Você é o visitante número %d", number)))
 	})
