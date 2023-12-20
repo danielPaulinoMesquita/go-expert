@@ -8,3 +8,7 @@ Wait Groups
 * Add quantity of tasks; operations
 * Infos that you have finished one operation
 * Wait until the operations have been finished.
+
+Channels
+hello <- "example" // the arrow means that channel only will receive information
+<- hello // the arrow means that empties the channel
