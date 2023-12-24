@@ -14,11 +14,16 @@ func worker(workerId int, data chan int) {
 
 func main() {
 	data := make(chan int)
+	QtdWorkers := 10
 
-	go worker(1, data)
-	go worker(2, data)
+	for i := 0; i < QtdWorkers; i++ {
+		go worker(i, data)
+	}
 
-	for i := 0; i < 10; i++ {
+	//go worker(1, data)
+	//go worker(2, data)
+
+	for i := 0; i < 100; i++ {
 		data <- 1
 	}
 
