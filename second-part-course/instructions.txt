@@ -30,7 +30,7 @@ https://github.com/go-chi/chi
 
 
 SWAGGER - GO
-first all, we need to install the binaries of swagger, after configuring the env in ~/.bashrc to point for bin of go
+first all, we need to install the binaries of swagger, later configuring the env in ~/.bashrc to point for bin of go
 
 ref: https://github.com/swaggo/swag
 
