@@ -6,7 +6,7 @@ import (
 
 func OpenChannel() (*amqp.Channel, error) {
 	// this channel is different of channel from MultiTreading
-	conn, err := amqp.Dial("amqp://gues:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
 	if err != nil {
 		panic(err)
 	}
