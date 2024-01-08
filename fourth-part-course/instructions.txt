@@ -16,3 +16,6 @@ Inseri um novo Cliente
     - Despachar / Fire no evento para suas operações sejam executadas
 
  -pkg serve para compartilhar recursos
+
+ Start docker compose with RabbitMq
+ docker-compose up -d
