@@ -19,3 +19,8 @@ Inseri um novo Cliente
 
  Start docker compose with RabbitMq
  docker-compose up -d
+
+
+ after have created the Producer and Consumer
+ you need to go to the path of Producer and "go run main"
+ later, you can consume going to the path of Consumer
