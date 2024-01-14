@@ -1,0 +1,2 @@
+// this site, help us to create and initialize the GraphQl
+https://gqlgen.com/
