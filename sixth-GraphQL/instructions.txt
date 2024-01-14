@@ -1,2 +1,9 @@
 // this site, help us to create and initialize the GraphQl
 https://gqlgen.com/
+
+// to create a new model for graphql, you use this line
+go run github.com/99designs/gqlgen generated
+
+// to run server for tests GRAPH QL
+go run server.go
+
