@@ -7,3 +7,28 @@ go run github.com/99designs/gqlgen generated
 // to run server for tests GRAPH QL
 go run server.go
 
+// Like the next lines of GraphQl
+mutation createCategory {
+  createCategory(input:{name:"Tecnologia", description: "Curso"}){
+    id
+    name
+    description
+  }
+}
+
+// one good thing of GraphQl is to select the fields that you would like to receive
+// first example
+query queryCategories {
+  categories {
+    id
+    name
+    description
+  }
+}
+// Second example
+query queryCategories {
+  categories {
+    id
+    description
+  }
+}
