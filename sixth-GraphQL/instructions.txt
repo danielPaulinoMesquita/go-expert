@@ -32,3 +32,9 @@ query queryCategories {
     description
   }
 }
+
+// Dados encadeados
+find courses by category Id, for this it was necessary to change model.go
+and create a specific model for each one
+ and the last run the command:
+  go run github.com/99designs/gqlgen generated

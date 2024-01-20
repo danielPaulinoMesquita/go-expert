@@ -1,5 +1,7 @@
 ## FOUNDATION / FUNDAÇÃO
 
+## 2- SECOND PART OF COURSE (ROUTES JWT)
+
 ### 1 - Entendendo a primeira linha
 * Tudo que estiver dentro do mesmo package é visivel para os outros arquivos go do mesmo pacote/package
 * package tem o nome do pacote que ele tiver inserido, caso não tem, ele vai ser main.
