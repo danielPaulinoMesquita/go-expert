@@ -1,0 +1,31 @@
+gRpc:
+
+it uses http2, it's faster them others
+
+it uses PROTOCOL BUFFER vs JSON, Protocol buffers are made in binaries, and his format is in XML, example:
+message SearchRequest {
+String query =1;
+int32 page_number =
+}
+
+---- || ---- || -----
+HTTP/2 initially was called SPDY
+
+At one API gRPC make many directionals streaming, like one client make many requests and the server make many responses.
+
+
+---- || ---- || -----
+REST            vs                   gRPC
+*Text/Json                           Protocol Buffers
+*Unidirecional                       Bidirecional e Assíncrono
+*Alta Latência                       Baixa latência
+*Sem contrato (maior chance)         Contrato definito (.photo)
+*Sem Suporte a steaming (Request/    Suporte a streaming
+Response)                            Design é livre
+*Design pré-definido                 Geração de código
+
+
+----- || ----- || ----
+install Protocol
+
+https://grpc.io/docs/protoc-installation/
