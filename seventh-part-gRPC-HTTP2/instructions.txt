@@ -29,3 +29,13 @@ Response)                            Design é livre
 install Protocol
 
 https://grpc.io/docs/protoc-installation/
+
+To install gRPC in go
+https://grpc.io/docs/languages/go/quickstart/
+----- || ----- || ----
+
+Generate the code protoc, line command to be run in the bash
+protoc --go_out=. --go-grpc_out=. proto/course_category.proto
+
+protoc --go_out=. // where will create the context usind plugin
+--go-grpc_out=. proto/course_category.proto // the file must be generated
