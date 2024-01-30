@@ -1,4 +1,4 @@
-package grpcServer
+package main
 
 import (
 	"database/sql"
@@ -7,6 +7,7 @@ import (
 	"github.com/daniel/grpc/internal/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	_ "gorm.io/driver/sqlite"
 	"net"
 )
 
@@ -25,6 +26,7 @@ func main() {
 	pb.RegisterCategoryServiceServer(grpcServer, categoryService)
 	reflection.Register(grpcServer)
 
+	// this the default port that evans make request
 	lis, err := net.Listen("tcp", ":50051")
 
 	if err != nil {

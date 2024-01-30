@@ -38,4 +38,19 @@ Generate the code protoc, line command to be run in the bash
 protoc --go_out=. --go-grpc_out=. proto/course_category.proto
 
 protoc --go_out=. // where will create the context usind plugin
---go-grpc_out=. proto/course_category.proto // the file must be generated
+--go-grpc_out=. proto/course_category.proto // the file must be generatesd
+
+
+----|| ----- || ------
+
+Using EVANS to make request GRPC
+
+https://github.com/ktr0731/evans/releases
+
+go install github.com/ktr0731/evans@v0.10.10
+
+so, you can start the server using: go run main.go and later to run evans using: evans -r repl
+
+sometimes the command:  service CategoryService doesn't work
+because you need to set the directory using the command line:
+- package pb
