@@ -1,0 +1,8 @@
+go install github.com/spf13/cobra-cli@latest
+* Installing Cobra, you will get create commands like instructions of git-cli, nvm-cli and others
+
+Initializing with cobra
+* cobra-cli init
+
+Adding new command
+* cobra-cli add ping
