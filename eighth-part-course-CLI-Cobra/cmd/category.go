@@ -19,8 +19,8 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		name, _ := cmd.Flags().GetString("name")
-		fmt.Println("Category  called called with name: " + name)
+		//name, _ := cmd.Flags().GetString("name")
+		fmt.Println("Category  called called with name: " + category)
 
 		exists, _ := cmd.Flags().GetBool("exists")
 		fmt.Println("Category called with exists: " + fmt.Sprint(exists))
@@ -31,11 +31,16 @@ to quickly create a Cobra application.`,
 	},
 }
 
+var category string
+
 func init() {
 	rootCmd.AddCommand(categoryCmd)
 
+	// StringVarP will pass the value of the flag to variable category
+	categoryCmd.PersistentFlags().StringVarP(&category, "name", "n", "", "CategoryName") //< this will work for sub commands like list and create
+
 	// StringP allows adding shortcut
-	categoryCmd.PersistentFlags().StringP("name", "n", "Y", "Name of the Category") //< this will work for sub commands like list and create
+	//categoryCmd.PersistentFlags().StringP("name", "n", "Y", "Name of the Category") //< this will work for sub commands like list and create
 
 	categoryCmd.PersistentFlags().BoolP("exists", "e", false, "Check if Category boolean input exists")
 
