@@ -16,3 +16,11 @@ To add a new command "create" that belongs to category
 To add a new command "list" that belongs to category
 * cobra-cli add list -p 'categoryCmd'
 
+After add StringP using shorthand:
+* go run main.go category -n=X
+
+Joining 2 commands(flags):
+* go run main.go category -n=categoria -e
+
+Joining 3 commands(flags)
+* go run main.go category -n=categoria -e --ID=10
