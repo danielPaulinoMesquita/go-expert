@@ -1,0 +1,24 @@
+1- MIGRATIONS
+2- SQLX
+3- SQLC (Pure Sql)
+
+## Enter inside of docker of MYSQL :
+sudo docker exec -it [container_name] bash
+
+## After
+mysql -u root -p
+
+- INSTALL migrations
+https://github.com/golang-migrate/migrate
+the best way to install migrate:
+https://www.geeksforgeeks.org/how-to-install-golang-migrate-on-ubuntu/
+
+
+- INITIALIZING Migrate
+migrate create -ext=sql -dir=sql/migrations -seq init
+
+- Command to start a migration | verbose means to be a description of what happened | up means creating the tables how that script says.
+migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/courses" -verbose up
+
+- Command to drop|delete the migration made
+migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/courses" -verbose down
