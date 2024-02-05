@@ -22,3 +22,10 @@ migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/co
 
 - Command to drop|delete the migration made
 migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/courses" -verbose down
+
+- Create Makefile to registry of commands, so once command created, we can run:
+make migrate
+make migratedown
+
+Attention:
+.PHONY: migrate migratedown createmigration <- This means it doesn't run files with those names, only runs the instructions
