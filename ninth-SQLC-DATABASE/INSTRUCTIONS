@@ -29,3 +29,19 @@ make migratedown
 
 Attention:
 .PHONY: migrate migratedown createmigration <- This means it doesn't run files with those names, only runs the instructions
+
+
+FRAMEWORKS DATABASE:
+
+SQLX is a good framework to make changes on the database
+
+SQLC is another framework
+to install him:
+- sudo snap install sqlc
+
+----------- || ---------------|| --------------
+After you create the file query.sql with the instructions:
+query.sql
+
+you run the command:
+sqlc generate
