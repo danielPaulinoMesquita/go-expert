@@ -1,6 +1,6 @@
 1- MIGRATIONS
 2- SQLX
-3- SQLC (Pure Sql)
+3- SQLC (Pure Sql) site: https://sqlc.dev/
 
 ## Enter inside of docker of MYSQL :
 sudo docker exec -it [container_name] bash
