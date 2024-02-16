@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/daniel/uow/internal/entity"
 	"github.com/daniel/uow/internal/repository"
+	"github.com/daniel/uow/pkg/uow"
 )
 
 type InputUseCaseUow struct {
