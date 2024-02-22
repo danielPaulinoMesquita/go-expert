@@ -1,0 +1,5 @@
+A good library for dependence injection(DI), this  lib belongs to Uber
+https://uber-go.github.io/fx/
+
+Another lib for DI (Actually is a genrator of code)
+https://github.com/google/wire
