@@ -2,4 +2,7 @@ module github.com/daniel
 
 go 1.21.3
 
-require github.com/mattn/go-sqlite3 v1.14.22
+require (
+	github.com/google/wire v0.6.0
+	github.com/mattn/go-sqlite3 v1.14.22
+)
