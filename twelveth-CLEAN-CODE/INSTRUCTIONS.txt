@@ -1,0 +1,14 @@
+IMPORTANT POINTS OF CLEAN ARCHITECTURE
+
+* The format or way of software
+* Component divisions
+* Communication between Components
+* A good Architecture will make easier the process od development, deploy, operation and maintenance
+* The great goal is give support for your system, life cycle, or give good maintenances
+
+Rules vs Details
+
+Rules of business brings the real value for software
+You can't spend time with details
+
+DDD - Heading the complexity in core of software
