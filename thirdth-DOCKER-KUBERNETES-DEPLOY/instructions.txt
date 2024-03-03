@@ -6,3 +6,18 @@ sudo docker-compose up -d
 
 - to enter inside the container, you must use:
 sudo docker-compose exec goapp bash
+
+- to run a build by GO app
+go build .
+
+- to run a build of GO based on Operating System (WINDOWS)
+GOOS=windows go build .
+
+- to run build based on architecture
+GOOS=linux go build .
+
+- to generate a build (or deploy) defining the name
+go build -o server
+
+- to generate to architect linux
+GOOS=linux go build -o server .
