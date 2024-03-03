@@ -1,0 +1,8 @@
+- to kill all container up. just run the command
+docker rm -f $(docker ps -a -q)
+
+- to up docker-compose, run:
+sudo docker-compose up -d
+
+- to enter inside the container, you must use:
+sudo docker-compose exec goapp bash

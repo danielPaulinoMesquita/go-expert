@@ -12,3 +12,14 @@ Rules of business brings the real value for software
 You can't spend time with details
 
 DDD - Heading the complexity in core of software
+
+USE CASES OF CLEAN ARCHITECTURE INTENTION
+- INTENTIONS
+- CLEARLY  of each shofteare behavior
+- DETAILS DOESN'T TO IMPACT OTHER RULES OF BUSINESS
+
+Use case Flux is a little different of DDD
+
+Mainly points of Clean Architecture
+* Inputs (always separate of busines) Ports (and adapters)
+* Outputs (always separate of business) Ports (and adapters)
