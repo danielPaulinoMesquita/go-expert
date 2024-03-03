@@ -21,3 +21,8 @@ go build -o server
 
 - to generate to architect linux
 GOOS=linux go build -o server .
+
+
+DWARF - Debugging with arbitrary record format is used to save details about variables, functions and other properties
+this will optimize the run command
+GOOS=linux go build -ldflags="-w -s" -o server .
