@@ -88,7 +88,7 @@ in your file of deployment.yaml (3 represent the amount of replics)
 
 -- SERVICES OF KUBERNETES ---
 
-service make possible the user access the server or pods, you need to create a file yaml name service and put the configurations there
+service make possible the user access the server or pods, you need to create a file yaml named service and put the configurations there
 
 to run command
 - kubectl apply -f k8s/service.yaml
@@ -102,3 +102,18 @@ to test the service and ports of pods, use command of kubectl
 ATTENTION
 
 You can find errors in your pod, remember the pods try to pull the image of docker hub, so your image needs to be in you docker hub
+
+Regarding the services, you can add LoadBalancer
+
+PROBES FOR KUBERNETES
+
+In the context of Kubernetes and Go (Golang), a probe refers to a mechanism used for health checking of applications running in Kubernetes clusters. Kubernetes provides two types of probes: readiness probes and liveness probes.
+
+Readiness Probe: A readiness probe is used to determine if a container is ready to handle incoming traffic. It indicates whether the application running inside the container is fully initialized and able to accept requests.
+If a readiness probe fails, Kubernetes will stop sending traffic to the container until it becomes ready. This is useful to ensure that only healthy containers receive traffic and prevent issues during rolling updates or scaling.
+
+Liveness Probe: A liveness probe is used to determine if a container is still running and functioning properly.
+It checks the health of the application inside the container and restarts the container if the probe fails. Liveness probes are used to prevent situations where a container is running but not able to fulfill its intended purpose.
+
+Both readiness and liveness probes can be configured with different types (HTTP, TCP, or Exec) and settings such as the probe's period, timeout, and success criteria.
+In Go (Golang), you can implement these probes by defining handlers for specific endpoints or functions that perform the necessary checks and return appropriate responses.
