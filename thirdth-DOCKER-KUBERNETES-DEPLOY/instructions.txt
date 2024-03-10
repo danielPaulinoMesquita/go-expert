@@ -80,3 +80,25 @@ kubectl apply -f k8s/deployment.yaml
 
 to see the pods
 kubectl get nodes
+
+to add replicas (or other pods) for kubernetes, you can add
+replicas: 3
+
+in your file of deployment.yaml (3 represent the amount of replics)
+
+-- SERVICES OF KUBERNETES ---
+
+service make possible the user access the server or pods, you need to create a file yaml name service and put the configurations there
+
+to run command
+- kubectl apply -f k8s/service.yaml
+
+to see the services created and running
+- kubectl get svc
+
+to test the service and ports of pods, use command of kubectl
+- kubectl port-forward svc/serversvc 8080:8080
+
+ATTENTION
+
+You can find errors in your pod, remember the pods try to pull the image of docker hub, so your image needs to be in you docker hub

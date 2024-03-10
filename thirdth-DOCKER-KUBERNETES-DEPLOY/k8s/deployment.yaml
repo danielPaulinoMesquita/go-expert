@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: server
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: server
@@ -13,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: daniel/deploy-k8:latest
+          image: danielpaulinomesquita/deploy-k8
           resources:
             limits:
               memory: "32Mi"
