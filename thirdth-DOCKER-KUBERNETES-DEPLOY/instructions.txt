@@ -55,3 +55,28 @@ by default CGO_enabled is 1
 run again the command to build:
 - docker build -t daniel/deploy-k8:latest -f Dockerfile.prod .
 
+
+-- KUBERNETES is manager of containers --------
+to create a cluster of kubernetes
+visit out https://kind.sigs.k8s.io/
+
+and run to install:
+go install sigs.k8s.io/kind@v0.22.0
+
+to create a cluster of k8(kubernetes)
+kind create cluster --name=goexpert
+
+to use context of kubernets:
+Set kubectl context to "kind-goexpert"
+- kubectl cluster-info --context kind-goexpert
+
+if you don't have kubectl yet, you can install acccessing:
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+KUBERNETES, works with PODS
+
+to create a pode, execute
+kubectl apply -f k8s/deployment.yaml
+
+to see the pods
+kubectl get nodes
