@@ -26,3 +26,32 @@ GOOS=linux go build -o server .
 DWARF - Debugging with arbitrary record format is used to save details about variables, functions and other properties
 this will optimize the run command
 GOOS=linux go build -ldflags="-w -s" -o server .
+
+Create a image docker file
+docker build -t daniel/deploy-k8:latest -f Dockerfile.prod .
+
+To see all images created to docker
+- sudo docker images
+
+To see the size of image dockerfile: (if is too big, would be good to optimize that file)
+- sudo docker images | grep daniel/deploy-k8
+
+To run a image of docker:
+- sudo docker run --rm -p 8080:8080 daniel/deploy-k8:latest
+
+To optimize a file (USING MULTI STADING BUILDING), you will generate the only binary of project go, this features is from Docker, such as "builder" and scratch
+basically you separate in steps, the first is builder, it is responsible only for create, and second is scratch, where is placed the minor step, only the binaries.
+to make this is necessary change the Dockerfile.prod and after, run again the command:
+- docker build -t daniel/deploy-k8:latest -f Dockerfile.prod .
+
+
+if you try again to run the image, probably will show an error
+exec ./server: no such file or directory
+
+And to solve this problem you will need to use the "C GO", this make sure that file doesn't execute external libraries like files in "C"
+you have to make a file seem
+RUN GOOS=linux CGO_ENABLED=0 go build -ldflags="-w -s" -o server .
+by default CGO_enabled is 1
+run again the command to build:
+- docker build -t daniel/deploy-k8:latest -f Dockerfile.prod .
+
