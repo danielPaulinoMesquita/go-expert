@@ -23,3 +23,29 @@ Use case Flux is a little different of DDD
 Mainly points of Clean Architecture
 * Inputs (always separate of busines) Ports (and adapters)
 * Outputs (always separate of business) Ports (and adapters)
+
+
+ENTITIES CLEAN ARCHITECTURE VS ENTITIES DO DDD(Driven Domain Design)
+* Clean architecture- É definido como camada de regra de negócio.
+    * Aplica em qualqyer situação.
+Ddd - São um agregado.
+* As entities do clean é um resultante do agregado ou evento.
+
+
+STRUCTURE TO CREATE A CLEAN SOFTWARE
+
+* internal
+   ---- > entity
+         - intefaces.go <-- here has necessaries interaces such as repository
+         - order.go <-- struct of order and parser from dto to order and methods make some business logic
+
+   ----- > event
+         - order_created_handler.go
+   ---- > infra
+   ---- > usecase
+
+
+   VISITED https://github.com/devfullcycle/goexpert/blob/main/20-CleanArch/
+
+
+
